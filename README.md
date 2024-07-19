@@ -1,7 +1,7 @@
 # jenkins-plugin-dependency-diff
 
 
-This script helps to compare dependencies and plugin dependencies between two versions of a Maven artifact. It extracts the dependencies listed in the `WEB-INF/lib` directory and the plugin dependencies from the `META-INF/MANIFEST.MF` file of each version.
+This script helps to compare dependencies and plugin dependencies between two versions of a Jenkins plugin. It extracts the dependencies listed in the `WEB-INF/lib` directory and the plugin dependencies from the `META-INF/MANIFEST.MF` file of each version.
 
 ## What It Does
 
