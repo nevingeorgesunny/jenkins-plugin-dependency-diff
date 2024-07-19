@@ -209,7 +209,7 @@ Implementation-Build: af527ce9ad64e2b15b72f98e4a4a7e29e9a1b36e
 
 
 ## To view the diff (optional Step)
-the script also creates a html diff using diff2html. To use diff2html, you need Node.js installed on your system
+the script also creates a html diff using diff2html. To use diff2html, you need Node.js installed on your system. If diff2html is not installed, the script will just throw a warning. You will need to do the diff on your own
 
 ### how to do this on mac
 
