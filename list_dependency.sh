@@ -2,7 +2,7 @@
 
 # Check if correct number of arguments is provided
 if [ "$#" -ne 4 ]; then
-  echo "Usage: $0 <group_id> <artifact_id> <old_version> <new_version>"
+  echo "Usage: $0 <group_id> <artifact_id> <version_one> <version_two>"
   exit 1
 fi
 
@@ -40,24 +40,24 @@ download_and_extract() {
   unzip $hpi_path -d $EXTRACTED_DIR
 }
 
-# Run the first set of commands
+# download_and_extract for VERSION_ONE
 download_and_extract $VERSION_ONE
 
-# Output 1
-ls $EXTRACTED_DIR/WEB-INF/lib > old_dependency.txt
-# Output 2
-cat $EXTRACTED_DIR/META-INF/MANIFEST.MF > old_plugin_dependency.txt
+# Fetch the dependencies for VERSION_ONE
+ls $EXTRACTED_DIR/WEB-INF/lib > version_one_dependency.txt
+# Fetch the manifest for VERSION_ONE
+cat $EXTRACTED_DIR/META-INF/MANIFEST.MF > version_one_plugin_dependency.txt
 
 # Cleanup
 rm -rf $EXTRACTED_DIR
 
-# Run the second set of commands
+# download_and_extract for VERSION_TWO
 download_and_extract $VERSION_TWO
 
-# Output 1.2
-ls $EXTRACTED_DIR/WEB-INF/lib > new_dependency.txt
-# Output 2.2
-cat $EXTRACTED_DIR/META-INF/MANIFEST.MF > new_plugin_dependency.txt
+# Fetch the dependencies for VERSION_TWO
+ls $EXTRACTED_DIR/WEB-INF/lib > version_two_dependency.txt
+# Fetch the manifest for VERSION_ONE
+cat $EXTRACTED_DIR/META-INF/MANIFEST.MF > version_two_plugin_dependency.txt
 
 # Cleanup
 rm -rf $EXTRACTED_DIR
@@ -68,29 +68,35 @@ rm -rf $EXTRACTED_DIR
 printf "\n\n\n"
 
 echo -e ${CYAN}$VERSION_ONE" ${YELLOW}dependency:${NC}"
-cat old_dependency.txt
+cat version_one_dependency.txt
 
 printf "\n\n"
 
 echo -e ${CYAN}$VERSION_TWO" ${YELLOW}dependency:${NC}"
-cat new_dependency.txt
+cat version_two_dependency.txt
 
 printf "\n\n\n"
 
 echo -e ${CYAN}$VERSION_ONE" ${YELLOW}manifest:\n${NC}"
-cat old_plugin_dependency.txt
+cat version_one_plugin_dependency.txt
 
 printf "\n\n"
 
 echo -e ""${CYAN}$VERSION_TWO" ${YELLOW}manifest:\n${NC}"
-cat new_plugin_dependency.txt
+cat version_two_plugin_dependency.txt
 
 
 
 
 
+# Generate diff and convert to HTML for dependency
+diff -u version_one_dependency.txt version_two_dependency.txt > diff_dependency.txt | diff2html -i file -- diff_dependency.txt > diff__dependency.html
+
+# Generate diff and convert to HTML for plugin dependency
+diff -u version_one_plugin_dependency.txt version_two_plugin_dependency.txt > plugin_diff_dependency.txt | diff2html -i file -- plugin_diff_dependency.txt > plugin_diff__dependency.html
 
 
+rm diff__dependency.html diff_dependency.txt plugin_diff__dependency.html plugin_diff_dependency.txt version_two_dependency.txt version_one_plugin_dependency.txt version_one_dependency.txt version_two_plugin_dependency.txt
 
 
 
