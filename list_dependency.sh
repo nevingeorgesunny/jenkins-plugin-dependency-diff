@@ -6,11 +6,16 @@ if [ "$#" -ne 4 ]; then
   exit 1
 fi
 
+# Define cyan color and reset
+CYAN='\033[0;36m'
+YELLOW='\033[33m'
+NC='\033[0m' # No Color
+
 # Assign command-line arguments to variables
 GROUP_ID="$1"
 ARTIFACT_ID="$2"
-VERSION_OLD="$3"
-VERSION_NEW="$4"
+VERSION_ONE="$3"
+VERSION_TWO="$4"
 
 PACKAGING="hpi"
 MVN_REPO="$HOME/.m2/repository"
@@ -33,7 +38,7 @@ download_and_extract() {
 }
 
 # Run the first set of commands
-download_and_extract $VERSION_OLD
+download_and_extract $VERSION_ONE
 
 # Output 1
 ls $EXTRACTED_DIR/WEB-INF/lib > old_dependency.txt
@@ -45,7 +50,7 @@ rm -rf $EXTRACTED_DIR
 
 
 # Run the second set of commands
-download_and_extract $VERSION_NEW
+download_and_extract $VERSION_TWO
 
 # Output 1.2
 ls $EXTRACTED_DIR/WEB-INF/lib > new_dependency.txt
@@ -55,20 +60,32 @@ cat $EXTRACTED_DIR/META-INF/MANIFEST.MF > new_plugin_dependency.txt
 # Cleanup
 rm -rf $EXTRACTED_DIR
 
-echo "**********************************"
+printf "\n\n\n"
 
-echo "Old dependency:"
+echo -e ${CYAN}$VERSION_ONE" ${YELLOW}dependency:${NC}"
 cat old_dependency.txt
 
-echo "New dependency:"
+printf "\n\n"
+
+echo -e ${CYAN}$VERSION_TWO" ${YELLOW}dependency:${NC}"
 cat new_dependency.txt
 
-echo "**********************************"
+printf "\n\n\n"
 
-echo "Old manifest:"
+echo -e ${CYAN}$VERSION_ONE" ${YELLOW}manifest:\n${NC}"
 cat old_plugin_dependency.txt
 
-echo "New manifest:"
+printf "\n\n"
+
+echo -e ""${CYAN}$VERSION_TWO" ${YELLOW}manifest:\n${NC}"
 cat new_plugin_dependency.txt
 
-echo "**********************************"
+
+
+
+
+
+
+
+
+
