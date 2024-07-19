@@ -17,7 +17,7 @@ This script helps to compare dependencies and plugin dependencies between two ve
 To run the script, use the following command:
 
 ```bash
-./dependency_diff_checker.sh <group_id> <artifact_id> <old_version> <new_version>
+./list_dependency.sh.sh <group_id> <artifact_id> <old_version> <new_version>
 ```
 
 ### Arguments
@@ -30,5 +30,5 @@ To run the script, use the following command:
 ### Example
 
 ```bash
-./dependency_diff_checker.sh com.example my-plugin 1.0.0 2.0.0
+./list_dependency.sh.sh com.example my-plugin 1.0.0 2.0.0
 ```
