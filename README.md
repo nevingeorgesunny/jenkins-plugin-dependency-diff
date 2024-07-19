@@ -32,9 +32,3 @@ To run the script, use the following command:
 ```bash
 ./dependency_diff_checker.sh com.example my-plugin 1.0.0 2.0.0
 ```
-
-
-The script generates the following files for each version:
-
-- `old_dependency.txt` and `new_dependency.txt`: Lists of jars present in the `WEB-INF/lib` directory.
-- `old_plugin_dependency.txt` and `new_plugin_dependency.txt`: Contents of the `META-INF/MANIFEST.MF` file.
