@@ -219,6 +219,8 @@ npm install diff2html
 npm install diff2html-cli
 ```
 
+here is how the diff will look 
+<img width="1216" alt="image" src="https://github.com/user-attachments/assets/f90ebb44-3ca2-450c-aa6a-4ca75b1ef623">
 
 
 
