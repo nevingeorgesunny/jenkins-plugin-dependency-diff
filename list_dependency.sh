@@ -6,7 +6,7 @@ if [ "$#" -ne 4 ]; then
   exit 1
 fi
 
-# Define cyan color and reset
+# Define colors
 CYAN='\033[0;36m'
 YELLOW='\033[33m'
 NC='\033[0m' # No Color
@@ -29,11 +29,11 @@ download_and_extract() {
   local version=$1
   local hpi_path="$MVN_REPO/$GROUP_ID_PATH/$ARTIFACT_ID/$version/$ARTIFACT_ID-$version.$PACKAGING"
 
-  echo "running : mvn dependency:get -DartifactId=$ARTIFACT_ID -DgroupId=$GROUP_ID -Dpackaging=$PACKAGING -Dversion=$version -Dtransitive=false"
+  echo -e "\nrunning : ${YELLOW}mvn dependency:get -DartifactId=$ARTIFACT_ID -DgroupId=$GROUP_ID -Dpackaging=$PACKAGING -Dversion=$version -Dtransitive=false${NC}\n"
 
   mvn dependency:get -DartifactId=$ARTIFACT_ID -DgroupId=$GROUP_ID -Dpackaging=$PACKAGING -Dversion=$version -Dtransitive=false
 
-  echo "running : unzip $hpi_path -d $EXTRACTED_DIR"
+  echo -e "\nrunning : ${YELLOW}unzip $hpi_path -d $EXTRACTED_DIR${NC}\n"
   unzip $hpi_path -d $EXTRACTED_DIR
 }
 
@@ -48,7 +48,6 @@ cat $EXTRACTED_DIR/META-INF/MANIFEST.MF > old_plugin_dependency.txt
 # Cleanup
 rm -rf $EXTRACTED_DIR
 
-
 # Run the second set of commands
 download_and_extract $VERSION_TWO
 
@@ -59,6 +58,9 @@ cat $EXTRACTED_DIR/META-INF/MANIFEST.MF > new_plugin_dependency.txt
 
 # Cleanup
 rm -rf $EXTRACTED_DIR
+
+# Print the output
+
 
 printf "\n\n\n"
 
