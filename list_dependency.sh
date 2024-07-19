@@ -31,9 +31,12 @@ download_and_extract() {
 
   echo -e "\nrunning : ${YELLOW}mvn dependency:get -DartifactId=$ARTIFACT_ID -DgroupId=$GROUP_ID -Dpackaging=$PACKAGING -Dversion=$version -Dtransitive=false${NC}\n"
 
+  #Running mvn dependency:get
   mvn dependency:get -DartifactId=$ARTIFACT_ID -DgroupId=$GROUP_ID -Dpackaging=$PACKAGING -Dversion=$version -Dtransitive=false
 
   echo -e "\nrunning : ${YELLOW}unzip $hpi_path -d $EXTRACTED_DIR${NC}\n"
+  
+  #Extracting the hpi
   unzip $hpi_path -d $EXTRACTED_DIR
 }
 
