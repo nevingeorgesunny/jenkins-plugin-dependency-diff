@@ -206,11 +206,19 @@ Plugin-GitHash: af527ce9ad64e2b15b72f98e4a4a7e29e9a1b36e
 Implementation-Build: af527ce9ad64e2b15b72f98e4a4a7e29e9a1b36e
 
 ```
-### under dependency 
-- will list out all direct and transitive dependencies
 
-### under manifest 
-- will list out all the direct and trasitive plugin dependencies
+
+## To view the diff (optional Step)
+the script also creates a html diff using diff2html. for this to work , you will need to install npm and diff2html
+
+### how to do this on mac
+
+```bash
+brew install node
+npm install diff2html
+npm install diff2html-cli
+```
+
 
 
 
