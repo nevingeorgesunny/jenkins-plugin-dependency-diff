@@ -8,7 +8,7 @@ This script helps to compare dependencies and plugin dependencies between two ve
 To run the script, use the following command:
 
 ```bash
-./list_dependency.sh.sh <group_id> <artifact_id> <old_version> <new_version>
+./list_dependency.sh <group_id> <artifact_id> <old_version> <new_version>
 ```
 
 ### Arguments
