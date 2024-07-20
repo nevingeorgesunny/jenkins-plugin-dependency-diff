@@ -37,8 +37,7 @@ To run the script, use the following command:
 
 ### Example Output
 
-<img width="1016" alt="image" src="https://github.com/user-attachments/assets/881fe972-2649-4bbd-9c9d-f1a95deec544">
-
+<img width="1016" alt="image" src="https://github.com/user-attachments/assets/0df8193e-caba-40a9-9012-ab81fbf80306">
 
 ## To view the diff (optional Step)
 the script also creates a html diff using diff2html. To use diff2html, you need Node.js installed on your system. If diff2html is not installed, the script will just throw a warning. You will need to do the diff on your own
