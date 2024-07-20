@@ -75,28 +75,29 @@ printf "\n\n"
 echo -e ${CYAN}$VERSION_TWO" ${YELLOW}dependency:${NC}"
 cat version_two_dependency.txt
 
-printf "\n\n\n"
-
-echo -e ${CYAN}$VERSION_ONE" ${YELLOW}manifest:\n${NC}"
-cat version_one_plugin_dependency.txt
-
 printf "\n\n"
 
-echo -e ""${CYAN}$VERSION_TWO" ${YELLOW}manifest:\n${NC}"
+echo -e ${CYAN}$VERSION_ONE" ${YELLOW}manifest:${NC}"
+cat version_one_plugin_dependency.txt
+
+printf "\n"
+
+echo -e ""${CYAN}$VERSION_TWO" ${YELLOW}manifest:${NC}"
 cat version_two_plugin_dependency.txt
 
 
+# Generate diff and convert to HTML for dependency (optional: for diff2html to work you will need to install Node.js)
 
-
-
-# Generate diff and convert to HTML for dependency
+# Setps to set up in mac
+#  - brew install node
+#  - npm install diff2html
+#  - npm install diff2html-cli
 diff -u version_one_dependency.txt version_two_dependency.txt > diff_dependency.txt | diff2html -i file -- diff_dependency.txt > diff__dependency.html
 
 # Generate diff and convert to HTML for plugin dependency
 diff -u version_one_plugin_dependency.txt version_two_plugin_dependency.txt > plugin_diff_dependency.txt | diff2html -i file -- plugin_diff_dependency.txt > plugin_diff__dependency.html
 
-
-rm diff__dependency.html diff_dependency.txt plugin_diff__dependency.html plugin_diff_dependency.txt version_two_dependency.txt version_one_plugin_dependency.txt version_one_dependency.txt version_two_plugin_dependency.txt
-
+# Cleanup
+rm *diff* *version*
 
 
