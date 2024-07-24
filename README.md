@@ -1,4 +1,4 @@
-# jenkins-plugin-dependency-list
+# Jenkins Plugin Dependency List
 
 
 This script helps to compare dependencies and plugin dependencies between two versions of a Jenkins plugin. It extracts the dependencies listed in the `WEB-INF/lib` directory and the plugin dependencies from the `META-INF/MANIFEST.MF` file of each version.
